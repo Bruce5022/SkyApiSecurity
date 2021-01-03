@@ -1,5 +1,6 @@
 package com.sky.security.filter;
 
+import com.lambdaworks.crypto.SCryptUtil;
 import com.sky.security.dao.UserRepository;
 import com.sky.security.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class BasicAuthenticationFilter extends OncePerRequestFilter {
 
             for (User user : userList) {
                 String userPwd = user.getPwd();
-                if (!StringUtils.isEmpty(userPwd) && userPwd.equalsIgnoreCase(pwd)) {
+                if (!StringUtils.isEmpty(userPwd) && SCryptUtil.check(pwd,userPwd)) {
                     httpServletRequest.setAttribute("user", user);
                 }
             }

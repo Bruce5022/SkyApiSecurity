@@ -1,5 +1,6 @@
 package com.sky.security.service.impl;
 
+import com.lambdaworks.crypto.SCryptUtil;
 import com.sky.security.dao.UserRepository;
 import com.sky.security.model.User;
 import com.sky.security.model.UserDTO;
@@ -22,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVO create(UserDTO user) {
         User copyBean = this.copyBean(user, User.class);
-        copyBean.setUserName(null);
+        copyBean.setPwd(SCryptUtil.scrypt(copyBean.getPwd(),32768,8,1));
         User savedUser = userRepository.save(copyBean);
         return this.copyBean(savedUser, UserVO.class);
     }
