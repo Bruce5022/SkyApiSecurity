@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: user-api-server
+  datasource:
+    url: jdbc:mysql://192.168.70.10:3306/skydb?characterEncoding=utf8
+    username: root
+    password: Windows8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    generate-ddl: true
