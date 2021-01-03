@@ -21,7 +21,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserVO create(UserDTO user) {
-        User savedUser = userRepository.save(this.copyBean(user, User.class));
+        User copyBean = this.copyBean(user, User.class);
+        copyBean.setUserName(null);
+        User savedUser = userRepository.save(copyBean);
         return this.copyBean(savedUser, UserVO.class);
     }
 
