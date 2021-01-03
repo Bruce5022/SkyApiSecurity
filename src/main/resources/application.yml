@@ -9,3 +9,8 @@ spring:
   jpa:
     show-sql: true
     generate-ddl: true
+server:
+  ssl:
+    key-store: classpath:sky.key
+    key-password: Windows8
+    key-store-password: Windows8
