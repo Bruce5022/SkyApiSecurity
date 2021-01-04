@@ -1,6 +1,7 @@
 package com.sky.security.filter;
 
 import com.google.common.util.concurrent.RateLimiter;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @Component
+@Order(1)
 public class RateLimitFilter extends OncePerRequestFilter {
 
     // 每秒钟只有一个请求过去

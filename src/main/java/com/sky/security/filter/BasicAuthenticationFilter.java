@@ -4,6 +4,7 @@ import com.lambdaworks.crypto.SCryptUtil;
 import com.sky.security.dao.UserRepository;
 import com.sky.security.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Base64Utils;
 import org.springframework.util.StringUtils;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
+@Order(2)
 public class BasicAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
