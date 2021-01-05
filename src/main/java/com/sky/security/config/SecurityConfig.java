@@ -1,5 +1,6 @@
 package com.sky.security.config;
 
+import com.sky.security.filter.AclInterceptor;
 import com.sky.security.filter.AuditLogInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -17,10 +18,13 @@ public class SecurityConfig implements WebMvcConfigurer {
 
     @Autowired
     private AuditLogInterceptor auditLogInterceptor;
+    @Autowired
+    private AclInterceptor aclInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(auditLogInterceptor);
+        registry.addInterceptor(aclInterceptor);
     }
 
 

@@ -21,6 +21,8 @@ public class User {
     @NotBlank(message = "密码不能为Null")
     private String pwd;
 
+    private String permissions;
+
     public Long getId() {
         return id;
     }
@@ -51,5 +53,13 @@ public class User {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    public boolean hasPermission(String method) {
+        if (method.equalsIgnoreCase("get")) {
+            return permissions.contains("r");
+        } else {
+            return permissions.contains("w");
+        }
     }
 }
