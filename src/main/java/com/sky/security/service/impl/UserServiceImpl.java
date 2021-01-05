@@ -55,4 +55,9 @@ public class UserServiceImpl implements UserService {
         }
         return userVOList;
     }
+
+    @Override
+    public UserVO login(UserDTO user) {
+        return null;
+    }
 }

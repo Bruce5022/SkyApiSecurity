@@ -18,4 +18,6 @@ public interface UserService extends BeanCopyService {
     UserVO get(@PathVariable Long id);
 
     List<UserVO> queryJpa(String name);
+
+    UserVO login(UserDTO user);
 }

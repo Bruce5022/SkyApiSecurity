@@ -1,6 +1,5 @@
 package com.sky.security.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sky.security.model.User;
 import com.sky.security.model.UserDTO;
 import com.sky.security.model.UserVO;
@@ -33,6 +32,13 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @GetMapping("/login")
+    public void login(@RequestBody UserDTO user, HttpServletRequest request) throws Exception {
+        UserVO userVo = userService.login(user);
+        request.getSession().setAttribute("user", userVo);
+    }
+
 
     @PostMapping
     public UserVO create(@RequestBody @Validated UserDTO user, BindingResult bindingResult) throws Exception {
